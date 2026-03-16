@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Cart - Luxe Jewelry</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        /* margin: 0; */
+        overflow-x: hidden;
+      }
+
+      body {
+        overflow-x: hidden;
+        box-sizing: border-box;
+
+        /* overflow-y: scroll; */
+      }
+      .font-playfair {
+        font-family: "Playfair Display", serif;
+      }
+      .font-inter {
+        font-family: "Inter", sans-serif;
+      }
+      .gold-accent {
+        color: #d4af37;
+      }
+      .bg-gold {
+        background-color: #d4af37;
+      }
+      .border-gold {
+        border-color: #d4af37;
+      }
+      .hover-gold:hover {
+        background-color: #d4af37;
+        color: white;
+      }
+
+      /*  */
+      /* try */
+      /* Mobile first: hide menu */
+      /* Hide checkbox */
+      /* Hide the toggle checkbox */
+      /* Hide the toggle checkbox */
+      #menu-toggle {
+        display: none;
+      }
+
+      /* Hamburger button */
+      .menu-btn {
+        display: none;
+        font-size: 28px;
+        cursor: pointer;
+        background-color: #000;
+        color: white;
+        padding: 10px 16px;
+        border-radius: 8px;
+        border: none;
+      }
+
+      /* Menu hidden by default */
+      /* Mobile menu styles */
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: white;
+        z-index: 100;
+        padding: 20px;
+        overflow-y: auto;
+      }
+      .mobile-menu.active {
+        display: block;
+      }
+      .close-menu {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 24px;
+      }
+
+      /*  */
+      /* Ensure images scale properly */
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .hero-bg img {
+        height: auto;
+        max-height: 80vh;
+        object-fit: cover;
+      }
+
+      @media (max-width: 768px) {
+        .hero-bg img {
+          height: 50vh;
+        }
+      }
+      /*  */
+
+      /* Add to your existing styles */
+      @media (max-width: 640px) {
+        .hero-bg .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .product-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .trendy-collection .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .customer-reviews .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .popular-categories .grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+      }
+
+      @media (min-width: 640px) and (max-width: 1024px) {
+        .product-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .trendy-collection .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* try */
+      /* Mobile first: hide menu */
+      #menu-toggle {
+        display: none; /* Hide by default */
+      }
+
+      #mobile-menu {
+        transition: all 0.3s ease;
+      }
+
+      /* Gold accent color for hover states */
+      .hover\:gold-accent:hover {
+        color: #ffd700; /* Gold color */
+      }
+
+      @media (max-width: 759px) {
+        #menu-toggle {
+          display: block; /* Show only when screen is 759px or below */
+          width: 100%;
+        }
+      }
+      /*  */
+    </style>
+  </head>
+  <body class="font-inter text-gray-800 bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="font-playfair text-2xl font-bold gold-accent">
+            <!-- Menu (hidden by default on small screens) -->
+            <button id="mobile-menu-toggle" class="md:hidden text-2xl">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <!--  -->
+            <!-- Mobile Menu (hidden by default) -->
+            <div
+              id="mobile-menu"
+              class="hidden md:hidden absolute top-16 left-0 w-full bg-white shadow-md"
+            >
+              <ul class="flex flex-col p-4 space-y-3">
+                <li>
+                  <a
+                    href="#"
+                    class="block py-2 hover:bg-gray-100 px-4"
+                    onclick="showSection('home')"
+                    >Home</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block py-2 hover:bg-gray-100 px-4"
+                    onclick="showSection('products')"
+                    >Products</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block py-2 hover:bg-gray-100 px-4"
+                    onclick="showSection('about')"
+                    >About</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block py-2 hover:bg-gray-100 px-4"
+                    onclick="showSection('contact')"
+                    >Contact Us</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!--  -->
+            <!--  -->
+            <a href="index.html">Luxe Jewelry</a>
+          </div>
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="index.html"
+              class="px-3 py-2 text-sm font-medium hover:gold-accent transition"
+              >Home</a
+            >
+            <a
+              href="index.html#products"
+              class="px-3 py-2 text-sm font-medium hover:gold-accent transition"
+              >Products</a
+            >
+            <a
+              href="index.html#about"
+              class="px-3 py-2 text-sm font-medium hover:gold-accent transition"
+              >About</a
+            >
+            <a
+              href="index.html#contact"
+              class="px-3 py-2 text-sm font-medium hover:gold-accent transition"
+              >Contact</a
+            >
+          </div>
+          <!--  
+          <div class="flex items-center space-x-4">
+            <a href="cart.html" class="relative">
+              <i class="fas fa-shopping-cart text-lg gold-accent"></i>
+              <span
+                id="cart-count"
+                class="absolute -top-2 -right-2 bg-gold text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"
+                >0</span
+              >
+            </a>
+          </div>
+          -->
+
+          <!--  -->
+          <a href="#" class="relative">
+            <i
+              class="fas fa-shopping-cart text-lg cursor-pointer hover:gold-accent transition"
+            ></i>
+            <span
+              id="cart-count"
+              class="absolute -top-2 -right-2 bg-gold text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"
+            >
+              0
+            </span>
+          </a>
+          <!--  -->
+          <div class="absolute">
+            <!-- </button> -->
+          </div>
+          <!--  -->
+        </div>
+      </div>
+    </nav>
+
+    <!-- Cart Section -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!-- <h1 class="font-playfair text-4xl font-bold mb-8">Your Shopping Cart</h1> -->
+      <b class="text-3xl font-bold text-center">Your Shopping Cart</b>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Cart Items -->
+        <div class="lg:col-span-2 bg-white rounded-lg shadow-md p-6">
+          <div id="empty-cart-message" class="text-center py-12 hidden">
+            <i class="fas fa-shopping-cart text-4xl gold-accent mb-4"></i>
+            <h3 class="text-xl font-semibold mb-2">Your cart is empty</h3>
+            <p class="text-gray-600 mb-6">
+              Start shopping to add items to your cart
+            </p>
+            <a
+              href="index.html#products"
+              class="bg-gold text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition"
+              >Browse Products</a
+            >
+          </div>
+
+          <div id="cart-items-container">
+            <!-- Cart items will be loaded here by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="bg-white rounded-lg shadow-md p-6 h-fit sticky top-4">
+          <h2 class="font-playfair text-2xl font-bold mb-6">Order Summary</h2>
+
+          <div class="space-y-4 mb-6">
+            <div class="flex justify-between">
+              <span class="text-gray-600">Subtotal</span>
+              <span id="subtotal" class="font-semibold">₹0.00</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">Shipping</span>
+              <span id="shipping" class="font-semibold">₹0.00</span>
+            </div>
+            <div class="flex justify-between border-t border-gray-200 pt-4">
+              <span class="font-semibold">Total</span>
+              <span
+                id="total"
+                class="font-playfair text-xl font-bold gold-accent"
+                >₹0.00</span
+              >
+            </div>
+          </div>
+
+          <button
+            id="checkout-btn"
+            class="w-full bg-gold text-white py-3 px-6 rounded-lg hover:bg-yellow-600 transition font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled
+          >
+            Proceed to Checkout
+          </button>
+
+          <div class="mt-6 text-center">
+            <p class="text-gray-600">or</p>
+            <a
+              href="index.html#products"
+              class="text-gold font-medium hover:underline"
+              >Continue Shopping</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="font-playfair text-2xl font-bold gold-accent mb-4">
+              Luxe Jewelry
+            </h3>
+            <p class="text-gray-400 mb-4">
+              Crafting timeless elegance with premium jewelry that celebrates
+              life's precious moments.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gold transition"
+              >
+                <i class="fab fa-facebook-f text-sm"></i>
+              </a>
+              <a
+                href="#"
+                class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gold transition"
+              >
+                <i class="fab fa-instagram text-sm"></i>
+              </a>
+              <a
+                href="#"
+                class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gold transition"
+              >
+                <i class="fab fa-twitter text-sm"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="index.html" class="hover:text-white transition"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="index.html#products"
+                  class="hover:text-white transition"
+                  >Products</a
+                >
+              </li>
+              <li>
+                <a href="index.html#about" class="hover:text-white transition"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a href="index.html#contact" class="hover:text-white transition"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-lg mb-4">Customer Service</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a href="#" class="hover:text-white transition"
+                  >Shipping Policy</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition"
+                  >Returns & Exchanges</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition"
+                  >Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition"
+                  >Terms of Service</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-lg mb-4">Newsletter</h4>
+            <p class="text-gray-400 mb-4">
+              Subscribe to get updates on new arrivals
+            </p>
+            <div class="flex">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                class="flex-1 px-4 py-2 rounded-l-lg bg-gray-800 border border-gray-700 focus:outline-none focus:border-gold"
+              />
+              <button
+                class="bg-gold px-6 py-2 rounded-r-lg hover:bg-yellow-600 transition"
+              >
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400"
+        >
+          <p>&copy; 2024 Luxe Jewelry. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="cart.js"></script>
+    <script src="jew.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>

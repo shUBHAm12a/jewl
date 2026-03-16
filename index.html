@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luxe Jewelry - Premium Jewelry Collection</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="form.css" ref="stylesheet" />
+
+    <style>
+      body {
+        overflow-x: hidden;
+        box-sizing: border-box;
+      }
+
+      .font-playfair {
+        font-family: "Playfair Display", serif;
+      }
+      .font-inter {
+        font-family: "Inter", sans-serif;
+      }
+      .hero-bg {
+        background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+      }
+      .product-card {
+        transition: all 0.3s ease;
+      }
+      .product-card:hover {
+        transform: translateY(-5px);
+      }
+      .section {
+        display: none;
+      }
+      .section.active {
+        display: block;
+      }
+      .nav-link.active {
+        color: #d4af37;
+        border-bottom: 2px solid #d4af37;
+      }
+      .gold-accent {
+        color: #d4af37;
+      }
+      .bg-gold {
+        background-color: #d4af37;
+      }
+      .border-gold {
+        border-color: #d4af37;
+      }
+      .hover-gold:hover {
+        background-color: #d4af37;
+        color: white;
+      }
+      .product-overlay {
+        background: rgba(0, 0, 0, 0.8);
+      }
+      .fade-in {
+        animation: fadeIn 0.5s ease-in;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      /*  */
+
+      /* Mobile menu styles */
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: white;
+        z-index: 100;
+        padding: 20px;
+        overflow-y: auto;
+      }
+
+      .mobile-menu.active {
+        display: block;
+      }
+
+      .close-menu {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 24px;
+      }
+
+      /*  */
+      /* Ensure images scale properly */
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .hero-bg img {
+        height: auto;
+        max-height: 80vh;
+        object-fit: cover;
+      }
+
+      @media (max-width: 768px) {
+        .hero-bg img {
+          height: 50vh;
+        }
+      }
+      /*  */
+
+      /* Add to your existing styles */
+      @media (max-width: 640px) {
+        .hero-bg .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .product-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .trendy-collection .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .customer-reviews .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .popular-categories .grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+      }
+
+      @media (min-width: 640px) and (max-width: 1024px) {
+        .product-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .trendy-collection .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* try */
+      /* Mobile first: hide menu */
+      #menu-toggle {
+        display: none; /* Hide by default */
+      }
+
+      #mobile-menu {
+        transition: all 0.3s ease;
+      }
+
+      /* Gold accent color for hover states */
+      .hover\:gold-accent:hover {
+        color: #ffd700; /* Gold color */
+      }
+
+      @media (max-width: 759px) {
+        #menu-toggle {
+          display: block; /* Show only when screen is 759px or below */
+          width: 100%;
+        }
+      }
+
+      /*  */
+    </style>
+  </head>
+  <body class="font-inter text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="font-playfair text-2xl font-bold gold-accent">
+            Luxe Jewelry
+          </div>
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="#"
+              class="nav-link active px-3 py-2 text-sm font-medium hover:gold-accent transition"
+              onclick="showSection('home')"
+              >Home</a
+            >
+            <a
+              href="#"
+              class="nav-link px-3 py-2 text-sm font-medium hover:gold-accent transition"
+              onclick="showSection('products')"
+              >Products</a
+            >
+            <a
+              href="#"
+              class="nav-link px-3 py-2 text-sm font-medium hover:gold-accent transition"
+              onclick="showSection('about')"
+              >About</a
+            >
+            <a
+              href="#"
+              class="nav-link px-3 py-2 text-sm font-medium hover:gold-accent transition"
+              onclick="showSection('contact')"
+              >Contact</a
+            >
+          </div>
+          <div class="flex items-center space-x-4">
+            <i
+              class="fas fa-search text-lg cursor-pointer hover:gold-accent transition"
+            ></i>
+
+            <a href="form.html">
+              <i
+                class="fa-solid fa-user-tie text-lg cursor-pointer hover:gold-accent transition"
+              ></i>
+            </a>
+            <!-- <a href="cart.html"> <i class="fas fa-shopping-cart text-lg cursor-pointer hover:gold-accent transition" ></i> <span id="cart-count" class="bg-gold text-white px-2 py-1 rounded-full">0</span></a> -->
+            <a href="cart.html" class="relative">
+              <i
+                class="fas fa-shopping-cart text-lg cursor-pointer hover:gold-accent transition"
+              ></i>
+              <span
+                id="cart-count"
+                class="absolute -top-2 -right-2 bg-gold text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"
+              >
+                0
+              </span>
+            </a>
+
+            <!-- try -->
+            <!-- <i -->
+            <!-- id="menu-toggle" -->
+            <!-- class="fa-solid fa-bars text-lg cursor-pointer hover:gold-accent transition" -->
+            <!-- ></i> -->
+
+            <!-- Menu (hidden by default on small screens) -->
+            <button id="mobile-menu-toggle" class="md:hidden text-2xl">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Mobile Menu (hidden by default) -->
+            <div
+              id="mobile-menu"
+              class="hidden md:hidden absolute top-16 left-0 w-full bg-white shadow-md"
+            >
+              <ul class="flex flex-col p-4 space-y-3">
+                <li>
+                  <a
+                    href="#"
+                    class="block py-2 hover:bg-gray-100 px-4"
+                    onclick="showSection('home')"
+                    >Home</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block py-2 hover:bg-gray-100 px-4"
+                    onclick="showSection('products')"
+                    >Products</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block py-2 hover:bg-gray-100 px-4"
+                    onclick="showSection('about')"
+                    >About</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block py-2 hover:bg-gray-100 px-4"
+                    onclick="showSection('contact')"
+                    >Contact Us</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!--  -->
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Home Section -->
+    <div id="home" class="section active">
+      <!-- Hero Section -->
+      <div class="hero-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="relative overflow-hidden rounded-lg shadow-xl">
+              <img
+                src="https://alukas.presslayouts.com/wp-content/uploads/2023/02/home-default-banner-1.jpg"
+                alt="Just Launched Collection"
+                class="w-full h-80 object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"
+              >
+                <div class="text-center text-white">
+                  <p class="text-sm font-medium mb-2">2021 FASHION</p>
+                  <h2 class="font-playfair text-3xl font-bold">
+                    Just Launched<br />Desk The Hals
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <div class="relative overflow-hidden rounded-lg shadow-xl">
+              <img
+                src="https://alukas.presslayouts.com/wp-content/uploads/2023/02/home-default-banner-2.jpg"
+                alt="Necklaces Collection"
+                class="w-full h-80 object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"
+              >
+                <div class="text-center text-white">
+                  <p class="text-sm font-medium mb-2">FLAT DISCOUNT</p>
+                  <h2 class="font-playfair text-3xl font-bold">
+                    Necklaces &<br />Body Jewels
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <div class="relative overflow-hidden rounded-lg shadow-xl">
+              <img
+                src="https://alukas.presslayouts.com/wp-content/uploads/2023/02/home-default-banner-3.jpg"
+                alt="Rings Collection"
+                class="w-full h-80 object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"
+              >
+                <div class="text-center text-white">
+                  <p class="text-sm font-medium mb-2">NEW COLLECTION</p>
+                  <h2 class="font-playfair text-3xl font-bold">
+                    Jewelry &<br />Charm Rings
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Popular Categories -->
+      <div class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="font-playfair text-4xl font-bold text-center mb-16">
+            Popular Categories
+          </h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center group cursor-pointer">
+              <div
+                class="w-20 h-20 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-gold transition"
+              >
+                <i
+                  class="fas fa-gem text-2xl group-hover:text-white transition"
+                ></i>
+              </div>
+              <h3 class="font-semibold">Rings</h3>
+            </div>
+            <div class="text-center group cursor-pointer">
+              <div
+                class="w-20 h-20 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-gold transition"
+              >
+                <i
+                  class="fas fa-necklace text-2xl group-hover:text-white transition"
+                ></i>
+              </div>
+              <h3 class="font-semibold">Necklaces</h3>
+            </div>
+            <div class="text-center group cursor-pointer">
+              <div
+                class="w-20 h-20 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-gold transition"
+              >
+                <i
+                  class="fas fa-circle text-2xl group-hover:text-white transition"
+                ></i>
+              </div>
+              <h3 class="font-semibold">Earrings</h3>
+            </div>
+            <div class="text-center group cursor-pointer">
+              <div
+                class="w-20 h-20 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-gold transition"
+              >
+                <i
+                  class="fas fa-hand-sparkles text-2xl group-hover:text-white transition"
+                ></i>
+              </div>
+              <h3 class="font-semibold">Bracelets</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trendy Collection -->
+      <div class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class="font-playfair text-4xl font-bold mb-4">
+              Trendy Collection
+            </h2>
+            <p class="text-gray-600">
+              Collect your loves with our newest arrivals.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="relative overflow-hidden rounded-lg shadow-xl">
+              <img
+                src="https://alukas.presslayouts.com/wp-content/uploads/2023/02/home-default-banner-4.jpg"
+                alt="Bangles Collection"
+                class="w-full h-96 object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-40 flex items-end"
+              >
+                <div class="p-8 text-white">
+                  <h3 class="font-playfair text-3xl font-bold mb-2">
+                    New Bangles<br />Collection
+                  </h3>
+                  <p class="text-sm">Catch the highlight in the roof</p>
+                </div>
+              </div>
+            </div>
+            <div class="relative overflow-hidden rounded-lg shadow-xl">
+              <img
+                src="https://alukas.presslayouts.com/wp-content/uploads/2023/02/home-default-banner-5.jpg"
+                alt="Ring Design"
+                class="w-full h-96 object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-40 flex items-end"
+              >
+                <div class="p-8 text-white">
+                  <h3 class="font-playfair text-3xl font-bold mb-2">
+                    Culture of<br />Ring Design
+                  </h3>
+                  <p class="text-sm">Pasha de Cartier Collection.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Products -->
+      <div class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="font-playfair text-4xl font-bold text-center mb-16">
+            Featured Products
+          </h2>
+          <div class="flex justify-center mb-12">
+            <div class="border-b border-gray-200">
+              <nav class="-mb-px flex space-x-8">
+                <a
+                  href="#"
+                  class="border-gold text-gold border-b-2 py-2 px-1 text-sm font-medium"
+                  >New Arrivals</a
+                >
+                <a
+                  href="#"
+                  class="border-transparent text-gray-500 hover:text-gray-700 border-b-2 py-2 px-1 text-sm font-medium"
+                  >Featured</a
+                >
+                <a
+                  href="#"
+                  class="border-transparent text-gray-500 hover:text-gray-700 border-b-2 py-2 px-1 text-sm font-medium"
+                  >Best Seller</a
+                >
+              </nav>
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8"
+            id="featured-products"
+          >
+            <!-- Products will be loaded here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Customer Reviews -->
+      <div class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class="font-playfair text-4xl font-bold text-center mb-16">
+            Customer Reviews
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-lg shadow-md">
+              <div class="flex mb-4">
+                <i class="fas fa-star gold-accent"></i>
+                <i class="fas fa-star gold-accent"></i>
+                <i class="fas fa-star gold-accent"></i>
+                <i class="fas fa-star gold-accent"></i>
+                <i class="fas fa-star gold-accent"></i>
+              </div>
+              <h3 class="font-semibold mb-2">Luxe is my favourite store</h3>
+              <p class="text-gray-600">
+                Great products and designs and such great quality, they always
+                wash up well no matter how many times I wash them.
+              </p>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-md">
+              <div class="flex mb-4">
+                <i class="fas fa-star gold-accent"></i>
+                <i class="fas fa-star gold-accent"></i>
+                <i class="fas fa-star gold-accent"></i>
+                <i class="fas fa-star gold-accent"></i>
+                <i class="fas fa-star gold-accent"></i>
+              </div>
+              <h3 class="font-semibold mb-2">Beautiful products</h3>
+              <p class="text-gray-600">
+                Beautiful jewelry. I always get complements. Good quality and
+                items last well. Great products and designs.
+              </p>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-md">
+              <div class="flex mb-4">
+                <i class="fas fa-star gold-accent"></i>
+                <i class="fas fa-star gold-accent"></i>
+                <i class="fas fa-star gold-accent"></i>
+                <i class="fas fa-star gold-accent"></i>
+                <i class="fas fa-star gold-accent"></i>
+              </div>
+              <h3 class="font-semibold mb-2">Lovely products</h3>
+              <p class="text-gray-600">
+                Great products and designs and such great quality, they always
+                wash up well no matter how many times I wash them.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Products Section -->
+    <div id="products" class="section">
+      <div class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 class="font-playfair text-4xl font-bold text-center mb-16">
+            Our Products
+          </h1>
+
+          <!-- Filter Tabs -->
+          <div class="flex justify-center mb-12">
+            <div class="border-b border-gray-200">
+              <nav class="-mb-px flex space-x-8">
+                <a
+                  href="#"
+                  class="product-filter active border-gold text-gold border-b-2 py-2 px-1 text-sm font-medium"
+                  data-category="all"
+                  >All Products</a
+                >
+                <a
+                  href="#"
+                  class="product-filter border-transparent text-gray-500 hover:text-gray-700 border-b-2 py-2 px-1 text-sm font-medium"
+                  data-category="rings"
+                  >Rings</a
+                >
+                <a
+                  href="#"
+                  class="product-filter border-transparent text-gray-500 hover:text-gray-700 border-b-2 py-2 px-1 text-sm font-medium"
+                  data-category="necklaces"
+                  >Necklaces</a
+                >
+                <a
+                  href="#"
+                  class="product-filter border-transparent text-gray-500 hover:text-gray-700 border-b-2 py-2 px-1 text-sm font-medium"
+                  data-category="earrings"
+                  >Earrings</a
+                >
+                <a
+                  href="#"
+                  class="product-filter border-transparent text-gray-500 hover:text-gray-700 border-b-2 py-2 px-1 text-sm font-medium"
+                  data-category="bracelets"
+                  >Bracelets</a
+                >
+              </nav>
+            </div>
+          </div>
+
+          <!-- Product Grid -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8"
+            id="product-grid"
+          >
+            <!-- Products will be loaded here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div
+      id="product-modal"
+      class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4"
+    >
+      <div
+        class="bg-white rounded-lg max-w-4xl w-full max-h-full overflow-y-auto"
+      >
+        <div class="p-8">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="font-playfair text-3xl font-bold" id="modal-title">
+              Product Details
+            </h2>
+            <button
+              onclick="closeModal()"
+              class="text-gray-500 hover:text-gray-700"
+            >
+              <i class="fas fa-times text-2xl"></i>
+            </button>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <img
+                id="modal-image"
+                src=""
+                alt=""
+                class="w-full h-96 object-cover rounded-lg"
+              />
+            </div>
+            <div>
+              <p class="text-gray-600 mb-4" id="modal-category"></p>
+              <h3
+                class="font-playfair text-2xl font-bold mb-4"
+                id="modal-name"
+              ></h3>
+              <p
+                class="text-3xl font-bold gold-accent mb-6"
+                id="modal-price"
+              ></p>
+              <p class="text-gray-700 mb-6" id="modal-description"></p>
+              <div class="space-y-4">
+                <!-- <button id="add-to-cart-btn" class="w-full bg-gold text-white py-3 px-6 rounded-lg hover:bg-yellow-600 transition"> Add to Cart </button> -->
+
+                <!--  -->
+
+                <button
+                  onclick="addToCart(currentModalProductId)"
+                  class="w-full bg-gold text-white py-3 px-6 rounded-lg hover:bg-yellow-600 transition"
+                >
+                  Add to Cart
+                </button>
+
+                <button
+                  class="w-full border border-gold text-gold py-3 px-6 rounded-lg hover-gold transition"
+                >
+                  BUY NOW
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="about" class="section">
+      <div class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h1 class="font-playfair text-4xl font-bold mb-6">
+              About Luxe Jewelry
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+              Crafting timeless elegance since 1985, we bring you the finest
+              collection of handcrafted jewelry that tells your unique story.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <img
+                src="https://alukas.presslayouts.com/wp-content/uploads/2023/02/home-default-banner-5.jpg"
+                alt="Our Story"
+                class="w-full h-96 object-cover rounded-lg shadow-xl"
+              />
+            </div>
+            <div>
+              <h2 class="font-playfair text-3xl font-bold mb-6">Our Story</h2>
+              <p class="text-gray-700 mb-6">
+                Founded with a passion for exceptional craftsmanship, Luxe
+                Jewelry has been creating stunning pieces that celebrate life's
+                most precious moments. Our artisans combine traditional
+                techniques with contemporary design to create jewelry that
+                transcends time.
+              </p>
+              <p class="text-gray-700 mb-6">
+                Every piece in our collection is carefully crafted using the
+                finest materials, from ethically sourced diamonds to premium
+                gold and silver. We believe that jewelry should not only be
+                beautiful but also meaningful, carrying stories and memories
+                that last a lifetime.
+              </p>
+              <div class="space-y-4">
+                <div class="flex items-center">
+                  <i class="fas fa-check-circle gold-accent mr-3"></i>
+                  <span>Ethically sourced materials</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-check-circle gold-accent mr-3"></i>
+                  <span>Handcrafted by master artisans</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-check-circle gold-accent mr-3"></i>
+                  <span>Lifetime warranty on all pieces</span>
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-check-circle gold-accent mr-3"></i>
+                  <span>Custom design services available</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-20">
+            <h2 class="font-playfair text-3xl font-bold text-center mb-12">
+              Our Values
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div class="text-center">
+                <div
+                  class="w-16 h-16 mx-auto mb-4 bg-gold rounded-full flex items-center justify-center"
+                >
+                  <i class="fas fa-gem text-white text-2xl"></i>
+                </div>
+                <h3 class="font-semibold text-xl mb-3">Quality</h3>
+                <p class="text-gray-600">
+                  We never compromise on quality, using only the finest
+                  materials and time-tested techniques.
+                </p>
+              </div>
+              <div class="text-center">
+                <div
+                  class="w-16 h-16 mx-auto mb-4 bg-gold rounded-full flex items-center justify-center"
+                >
+                  <i class="fas fa-heart text-white text-2xl"></i>
+                </div>
+                <h3 class="font-semibold text-xl mb-3">Passion</h3>
+                <p class="text-gray-600">
+                  Every piece is created with love and dedication to bring joy
+                  to our customers.
+                </p>
+              </div>
+              <div class="text-center">
+                <div
+                  class="w-16 h-16 mx-auto mb-4 bg-gold rounded-full flex items-center justify-center"
+                >
+                  <i class="fas fa-leaf text-white text-2xl"></i>
+                </div>
+                <h3 class="font-semibold text-xl mb-3">Sustainability</h3>
+                <p class="text-gray-600">
+                  We are committed to ethical sourcing and sustainable practices
+                  in all our operations.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" class="section">
+      <div class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h1 class="font-playfair text-4xl font-bold mb-6">Contact Us</h1>
+            <p class="text-xl text-gray-600">
+              We'd love to hear from you. Get in touch with our team.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div>
+              <h2 class="font-playfair text-2xl font-bold mb-8">
+                Get in Touch
+              </h2>
+              <div class="space-y-6">
+                <div class="flex items-start">
+                  <div
+                    class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mr-4"
+                  >
+                    <i class="fas fa-map-marker-alt text-white"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold mb-1">Address</h3>
+                    <p class="text-gray-600">
+                      123 Jewelry Street, Diamond District<br />New York, NY
+                      10001
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div
+                    class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mr-4"
+                  >
+                    <i class="fas fa-phone text-white"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold mb-1">Phone</h3>
+                    <p class="text-gray-600">+1 (555) 123-4567</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div
+                    class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mr-4"
+                  >
+                    <i class="fas fa-envelope text-white"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold mb-1">Email</h3>
+                    <p class="text-gray-600">info@luxejewelry.com</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div
+                    class="w-12 h-12 bg-gold rounded-full flex items-center justify-center mr-4"
+                  >
+                    <i class="fas fa-clock text-white"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold mb-1">Hours</h3>
+                    <p class="text-gray-600">
+                      Mon-Fri: 9am-6pm<br />Sat-Sun: 10am-4pm
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-8">
+                <h3 class="font-semibold mb-4">Follow Us</h3>
+                <div class="flex space-x-4">
+                  <a
+                    href="#"
+                    class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gold hover:text-white transition"
+                  >
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gold hover:text-white transition"
+                  >
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gold hover:text-white transition"
+                  >
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gold hover:text-white transition"
+                  >
+                    <i class="fab fa-pinterest"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h2 class="font-playfair text-2xl font-bold mb-8">
+                Send Message
+              </h2>
+              <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2"
+                      >First Name</label
+                    >
+                    <input
+                      type="text"
+                      class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-gold"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2"
+                      >Last Name</label
+                    >
+                    <input
+                      type="text"
+                      class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-gold"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-gold"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Phone</label
+                  >
+                  <input
+                    type="tel"
+                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-gold"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Subject</label
+                  >
+                  <input
+                    type="text"
+                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-gold"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Message</label
+                  >
+                  <textarea
+                    rows="5"
+                    class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-gold"
+                  ></textarea>
+                </div>
+                <button
+                  type="submit"
+                  class="w-full bg-gold text-white py-3 px-6 rounded-lg hover:bg-yellow-600 transition font-medium"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="font-playfair text-2xl font-bold gold-accent mb-4">
+              Luxe Jewelry
+            </h3>
+            <p class="text-gray-400 mb-4">
+              Crafting timeless elegance with premium jewelry that celebrates
+              life's precious moments.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gold transition"
+              >
+                <i class="fab fa-facebook-f text-sm"></i>
+              </a>
+              <a
+                href="#"
+                class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gold transition"
+              >
+                <i class="fab fa-instagram text-sm"></i>
+              </a>
+              <a
+                href="#"
+                class="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gold transition"
+              >
+                <i class="fab fa-twitter text-sm"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-white transition"
+                  onclick="showSection('home')"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-white transition"
+                  onclick="showSection('products')"
+                  >Products</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-white transition"
+                  onclick="showSection('about')"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-white transition"
+                  onclick="showSection('contact')"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-lg mb-4">Categories</h4>
+            <ul class="space-y-2 text-gray-400">
+              <li><a href="#" class="hover:text-white transition">Rings</a></li>
+              <li>
+                <a href="#" class="hover:text-white transition">Necklaces</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition">Earrings</a>
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition">Bracelets</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-lg mb-4">Newsletter</h4>
+            <p class="text-gray-400 mb-4">
+              Subscribe to get updates on new arrivals
+            </p>
+            <div class="flex">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                class="flex-1 px-4 py-2 rounded-l-lg bg-gray-800 border border-gray-700 focus:outline-none focus:border-gold"
+              />
+              <button
+                class="bg-gold px-6 py-2 rounded-r-lg hover:bg-yellow-600 transition"
+              >
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400"
+        >
+          <p>&copy; 2024 Luxe Jewelry. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- script -->
+
+    <script src="jew.js"></script>
+  </body>
+</html>

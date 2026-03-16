@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "Diamond Solitaire Ring",
+    "category": "rings",
+    "price": 2999.0,
+    "image": "https://alukas.presslayouts.com/wp-content/uploads/2023/02/home-default-banner-3.jpg",
+    "description": "Elegant solitaire ring featuring a brilliant-cut diamond set in 18k white gold."
+  },
+  {
+    "id": 2,
+    "name": "Pearl Drop Necklace",
+    "category": "necklaces",
+    "price": 1599.0,
+    "image": "https://alukas.presslayouts.com/wp-content/uploads/2023/02/home-default-banner-2.jpg",
+    "description": "Sophisticated pearl necklace with 18k gold chain."
+  },
+  {
+    "id": 3,
+    "name": "Gold Hoop Earrings",
+    "category": "earrings",
+    "price": 899.0,
+    "image": "https://alukas.presslayouts.com/wp-content/uploads/2023/02/home-default-banner-1.jpg",
+    "description": "Classic gold hoop earrings crafted from 14k yellow gold."
+  },
+  {
+    "id": 4,
+    "name": "Tennis Bracelet",
+    "category": "bracelets",
+    "price": 3499.0,
+    "image": "https://alukas.presslayouts.com/wp-content/uploads/2023/02/home-default-banner-4.jpg",
+    "description": "Stunning tennis bracelet featuring lab-grown diamonds set in platinum."
+  },
+  {
+    "id": 5,
+    "name": "Vintage Ruby Ring",
+    "category": "rings",
+    "price": 4299.0,
+    "image": "https://alukas.presslayouts.com/wp-content/uploads/2023/02/home-default-banner-5.jpg",
+    "description": "Exquisite vintage-inspired ring featuring a natural ruby surrounded by diamonds."
+  },
+  {
+    "id": 6,
+    "name": "Emerald Pendant Necklace",
+    "category": "necklaces",
+    "price": 2199.0,
+    "image": "https://alukas.presslayouts.com/wp-content/uploads/2023/02/home-default-banner-2.jpg",
+    "description": "Beautiful emerald pendant necklace with 18k gold chain."
+  },
+  {
+    "id": 7,
+    "name": "Diamond Stud Earrings",
+    "category": "earrings",
+    "price": 1799.0,
+    "image": "https://alukas.presslayouts.com/wp-content/uploads/2023/02/home-default-banner-1.jpg",
+    "description": "Classic diamond stud earrings in 14k white gold."
+  },
+  {
+    "id": 8,
+    "name": "Gold Chain Bracelet",
+    "category": "bracelets",
+    "price": 1299.0,
+    "image": "https://alukas.presslayouts.com/wp-content/uploads/2023/02/home-default-banner-4.jpg",
+    "description": "Sophisticated gold chain bracelet in 18k yellow gold."
+  }
+]
